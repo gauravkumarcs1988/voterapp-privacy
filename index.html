@@ -61,7 +61,7 @@
   <main class="wrap">
 
     <section>
-      <p class="muted">Last updated: 1 August 2026</p>
+      <p class="muted">Last updated: 15 October 2026</p>
       <p>
         This policy explains what the Voter App collects, why, and what happens
         to it. It covers both the Android application
@@ -113,6 +113,18 @@
           <tr>
             <td>Sign-in count, last sign-in IP address</td>
             <td>Account security and abuse prevention</td>
+          </tr>
+          <tr>
+            <td>Google account identifier and email address (only if you use &ldquo;Continue with Google&rdquo;)</td>
+            <td>To sign you in with Google. The email address is kept for support; your Google password is never seen by the app</td>
+          </tr>
+          <tr>
+            <td>Approximate area (optional, Android app only)</td>
+            <td>Shown to the administrator; see &ldquo;Approximate location&rdquo; below</td>
+          </tr>
+          <tr>
+            <td>Install identifier, app version, notification setting, install referrer, notification token</td>
+            <td>To deliver notifications and count app installs; see &ldquo;Notifications and sharing&rdquo; below</td>
           </tr>
           <tr>
             <td>Payment status and transaction reference</td>
@@ -177,6 +189,71 @@
     </section>
 
     <section>
+  <h2>Approximate location</h2>
+  <p>
+    The Android app can send your <strong>approximate area</strong> to the app
+    owner, so they can see roughly where the accounts they have issued are
+    being used. The app asks for this the first time you open the voter list,
+    explains what it is for, and only then shows Android's own permission
+    dialog.
+  </p>
+  <ul>
+    <li><strong>It is optional.</strong> If you choose "Not now", the app works exactly as it does otherwise &mdash; nothing is restricted, and you are not asked again.</li>
+    <li><strong>It is approximate, not precise.</strong> The app requests coarse location only and rounds the position to about one kilometre before sending it. What is stored is a neighbourhood such as "Vrindavan, Mathura, Uttar Pradesh", never a street address or an exact point.</li>
+    <li><strong>Only while the app is open.</strong> There is no background or continuous tracking. A position is read when you open the roll and at no other time.</li>
+    <li><strong>It is not a movement history.</strong> Each reading replaces the previous one. Only the most recent approximate area is kept, not a trail of where you have been.</li>
+    <li><strong>Only the app owner can see it.</strong> It is shown on the owner's user-management screen. Other users cannot see it, and you are not shown your own.</li>
+    <li>It is never sold, never shared with any third party, and never used for advertising.</li>
+  </ul>
+  <p>
+    You can withdraw permission at any time in Android Settings &rarr; Apps
+    &rarr; Voter App &rarr; Permissions &rarr; Location. The app then stops
+    sending it. To have the area already on file erased, contact the
+    administrator using the details on the "About &amp; Sources" screen.
+  </p>
+  <p class="muted">
+    The website does not collect location; this applies to the Android app only.
+  </p>
+</section>
+
+    <section>
+      <h2>Notifications and sharing</h2>
+      <p>
+        The Android app can show notifications from the administrator &mdash;
+        announcements, reminders, festival greetings, a notice when a newer
+        version is available, and a reminder before a Google Play subscription
+        ends. Notifications contain only general text written by the
+        administrator or the app; <strong>they never contain electoral roll
+        information</strong>.
+      </p>
+      <p>To deliver them, and to count how many phones use the app, the app sends the server:</p>
+      <ul>
+        <li><strong>A random install identifier</strong>, generated on the phone the first time the app runs. It is not an advertising ID and is not derived from your hardware; reinstalling the app produces a new one.</li>
+        <li>The app version, and whether notifications are allowed on the phone.</li>
+        <li>If you installed the app from a link someone shared, the <strong>Google Play install referrer</strong>, which tells us only which account shared that link.</li>
+        <li>When you are signed in, a <strong>notification token</strong> from Google's Firebase Cloud Messaging, so reminders meant for your account (such as your subscription ending) reach your phone. It is deactivated when you sign out.</li>
+      </ul>
+      <p>
+        Notifications are delivered through <strong>Firebase Cloud Messaging</strong>,
+        a Google service; Google processes the token and the message text only to
+        deliver it. The app also checks for new notifications in the background
+        every few hours, which needs no information about you.
+      </p>
+      <p>
+        <strong>Sharing.</strong> The &ldquo;Share&rdquo; button opens your phone's
+        own share menu with a link to the app on Google Play. When you are signed
+        in, that link carries your account number, so the administrator can see
+        how many new installs came from your shares. Nothing else about you is in
+        the link, and nothing is sent unless you choose to share it.
+      </p>
+      <p>
+        You can turn notifications off at any time in Android Settings &rarr;
+        Apps &rarr; Voter App &rarr; Notifications. The app keeps working
+        normally.
+      </p>
+    </section>
+
+    <section>
       <h2>Payments</h2>
       <p>
         Subscriptions purchased inside the Android app are processed by
@@ -202,7 +279,8 @@
       </ul>
       <p>
         The app contains no advertising SDK, no analytics SDK, and no tracking
-        for advertising purposes.
+        for advertising purposes. It uses Google's Firebase Cloud Messaging
+        only to deliver notifications.
       </p>
     </section>
 
